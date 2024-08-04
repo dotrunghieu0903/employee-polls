@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import NavBar from './components/NavBar';
+import LogIn from './components/Login';
+import Home from './components/Home';
+import LeaderBoard from './components/LeaderBoard';
+import New from './components/New';
+import { connect } from 'react-redux';
 
-function App() {
+function App({authedUser}) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+          {authedUser && <NavBar />}
+          <Route path='/login' exact element={<LogIn />}/>
+          <Route path='/' element={<Home />}/>
+          <Route path='/leaderboard' element={<LeaderBoard />}/>
+          <Route path='/new' element={<New />}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;
+const mapStateToProps = ({authedUser}) => ({
+  authedUser: !!authedUser
+});
+
+export default connect(mapStateToProps)(App)

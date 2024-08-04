@@ -1,0 +1,13 @@
+import { connect } from "react-redux";
+
+const New = () => {
+    return (
+        <h1>New</h1>
+    )
+}
+
+const mapStateToProps = ({}) => ({
+
+});
+
+export default connect(mapStateToProps)(New)
