@@ -15,12 +15,18 @@ const Login = ({loggedIn}) =>
             <Form>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>UserName</Form.Label>
-                    <Form.Control type="email" placeholder="Please input the username" />
+                    <Form.Control
+                    id = "inputUsername"
+                    data-testid="username"
+                    type="email" 
+                    placeholder="Please input the username" />
                 </Form.Group>
                 <Form.Label htmlFor="inputPassword">Password</Form.Label>
                 <Form.Control
-                    type="password"
                     id="inputPassword"
+                    data-testid="password"
+                    type="password"
+                    placeholder="Please input the password"
                 />
                 <Button as="a" variant="primary">Submit</Button>
             </Form>
