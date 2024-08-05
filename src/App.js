@@ -5,13 +5,15 @@ import LogIn from './components/Login';
 import DashBoard from './components/DashBoard';
 import LeaderBoard from './components/LeaderBoard';
 import New from './components/New';
-import { connect } from 'react-redux';
+import { useState } from 'react';
 
-function App({authedUser}) {
+function App() {
+  const authedUser = useState(false);
+
   return (
     <BrowserRouter>
+      {authedUser && <NavBar />}
       <Routes>
-          {authedUser && <NavBar />}
           <Route path='/login' exact element={<LogIn />}/>
           <Route path='/' element={<DashBoard />}/>
           <Route path='/leaderboard' element={<LeaderBoard />}/>
@@ -21,8 +23,4 @@ function App({authedUser}) {
   );
 }
 
-const mapStateToProps = ({authedUser}) => ({
-  authedUser: !!authedUser
-});
-
-export default connect(mapStateToProps)(App)
+export default App;

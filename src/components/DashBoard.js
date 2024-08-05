@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 
 const DashBoard = () => {
     return (
@@ -6,8 +5,5 @@ const DashBoard = () => {
     )
 }
 
-const mapStateToProps = ({authedUser, question}) => {
 
-}
-
-export default connect(mapStateToProps)(DashBoard);
+export default DashBoard;

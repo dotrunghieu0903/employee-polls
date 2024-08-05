@@ -1,4 +1,3 @@
-import { connect } from "react-redux";
 
 const LeaderBoard = () => {
     return (
@@ -6,8 +5,4 @@ const LeaderBoard = () => {
     )
 }
 
-const mapStateToProps = ({authedUser}) => ({
-
-});
-
-export default connect(mapStateToProps)(LeaderBoard)
+export default LeaderBoard;

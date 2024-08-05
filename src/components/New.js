@@ -1,4 +1,3 @@
-import { connect } from "react-redux";
 
 const New = () => {
     return (
@@ -6,8 +5,4 @@ const New = () => {
     )
 }
 
-const mapStateToProps = ({authedUser}) => ({
-
-});
-
-export default connect(mapStateToProps)(New)
+export default New;

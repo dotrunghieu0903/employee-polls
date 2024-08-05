@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit";
 
 import authorize from "../reducers/authorization";
 import users from "../reducers/user";
