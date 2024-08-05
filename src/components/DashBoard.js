@@ -6,7 +6,7 @@ const DashBoard = () => {
     )
 }
 
-const mapStateToProps = ({question}) => {
+const mapStateToProps = ({authedUser, question}) => {
 
 }
 

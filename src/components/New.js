@@ -6,7 +6,7 @@ const New = () => {
     )
 }
 
-const mapStateToProps = ({}) => ({
+const mapStateToProps = ({authedUser}) => ({
 
 });
 

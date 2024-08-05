@@ -6,7 +6,7 @@ const LeaderBoard = () => {
     )
 }
 
-const mapStateToProps = ({}) => ({
+const mapStateToProps = ({authedUser}) => ({
 
 });
 
