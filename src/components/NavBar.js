@@ -1,14 +1,30 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import { Image, Nav } from "react-bootstrap";
+
+import Avatar from "../images/Avatar.png"
 
 const NavBar = () => {
+    const navigate = useNavigate();
+    const isActivePath = (path) => window.location.pathname === path;
     return (
-        <nav>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/new">New</Link></li>
-                <li><Link to="/leaderboard">LeaderBoard</Link></li>
-            </ul>
-        </nav>
+        <Navbar className="container" fixed="top" >
+            {/* <Navbar.Brand>Home</Navbar.Brand> */}
+            <Nav>
+                <Nav.Link className={isActivePath("/") ? "active" : ""} onClick={() => navigate("/")}>
+                Home
+                </Nav.Link>
+                <Nav.Link className={isActivePath("/leaderboard") ? "active" : ""} onClick={() => navigate("/leaderboard")}>
+                LeaderBoard
+                </Nav.Link>
+                <Nav.Link className={isActivePath("/new") ? "active" : ""} onClick={() => navigate("/new")}>
+                New
+                </Nav.Link>
+            </Nav>
+            <Navbar.Collapse>
+                <Image src={Avatar} alt="avatar" style={{width:"50px", height: "50px", marginRight: "10px"}} roundedCircle />
+            </Navbar.Collapse> 
+        </Navbar>
     )
 };
 

@@ -1,7 +1,7 @@
 
 const LeaderBoard = () => {
     return (
-        <h1>LeaderBoard</h1>
+        <h6>LeaderBoard</h6>
     )
 }
 

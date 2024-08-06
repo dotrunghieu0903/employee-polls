@@ -1,28 +1,34 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
-import InputGroup from 'react-bootstrap/InputGroup';
+import { useNavigate } from "react-router-dom";
+import { Form, Button, Image, InputGroup, Alert } from 'react-bootstrap';
 
 import { Eye, EyeSlashFill } from "react-bootstrap-icons";
 
 import logo from "../images/EmployeePolls.png"
+import { login } from "../actions/authorization";
 
 const Login = () =>
 {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const dispatch = useDispatch();
     const [showPass, setShowPass] = useState(false);
+    const navigate = useNavigate();
+
     const clickHandler = () => {
         setShowPass((prev) => !prev);
     };
 
     const handleLogin = (e) => {
         e.preventDefault();
-        dispatch()
-        console.log(userName, password)
+        dispatch(login(userName, password))
+        .catch((error) => setError(error))
+
+        setUserName("");
+        setPassword("");
+        navigate("/");
     }
 
     return (
@@ -30,6 +36,7 @@ const Login = () =>
             <h2 style={{textAlign:"center"}}>Employee Polls</h2>
             <Image src={logo} alt="Logo" width={100} style={{display:"block", marginLeft:"auto", marginRight:"auto",width:"25%"}} />
             <h3 style={{textAlign:"center"}}>Log In</h3>
+            {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleLogin}>
                 <Form.Label style={{textAlign:"center"}}>UserName</Form.Label>
                 <Form.Group className="mb-3">
