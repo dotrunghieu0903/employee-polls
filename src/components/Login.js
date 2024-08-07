@@ -33,12 +33,12 @@ const Login = () =>
 
     return (
         <div>
-            <h2 style={{textAlign:"center"}}>Employee Polls</h2>
+            <h2 className="text-center">Employee Polls</h2>
             <Image src={logo} alt="Logo" width={100} style={{display:"block", marginLeft:"auto", marginRight:"auto",width:"25%"}} />
-            <h3 style={{textAlign:"center"}}>Log In</h3>
+            <h3 className="text-center">Log In</h3>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleLogin}>
-                <Form.Label style={{textAlign:"center"}}>UserName</Form.Label>
+                <Form.Label htmlFor="inputUsername">UserName</Form.Label>
                 <Form.Group className="mb-3">
                     <Form.Control
                     id = "inputUsername"

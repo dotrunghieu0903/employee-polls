@@ -45,7 +45,8 @@ export const login = (username, password) => {
                     if(user && user.password === password)
                     {
                         resolve(user);
-                        console.log(`user: ${JSON.stringify(user)}`)
+                        //console.log(`user: ${JSON.stringify(user)}`)
+                        dispatch(setAuthedUser(user));
                     } else {
                         reject(`Invalid credentials of ${username}`);
                     }

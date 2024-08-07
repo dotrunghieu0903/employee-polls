@@ -1,3 +1,6 @@
+import { getUsers } from "../servers/employee-polls-api";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
 export const RECEIVE_USERS = "RECEIVE_USERS";
 export const ADD_ANSWER = "ADD_ANSWER";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -5,7 +8,7 @@ export const ADD_QUESTION = "ADD_QUESTION";
 export function receiveUsers(users) {
     return {
         type: RECEIVE_USERS,
-        users
+        payload: users
     }
 }
 
@@ -25,3 +28,8 @@ export function addQuestionWithUser(question) {
         id: question.id
     }
 }
+
+export const initData = createAsyncThunk('', async () => {
+    const users = await getUsers();
+    return users;
+});
