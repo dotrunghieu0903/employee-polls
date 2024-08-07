@@ -22,10 +22,18 @@ export async function getQuestions() {
     }
 }
 
-export function saveQuestion(question) {
-    return _saveQuestion(question);
+export function saveQuestionApi(question) {
+    try {
+        return _saveQuestion(question);
+    } catch (err) {
+        console.log(`Error while saving the questions : ${err}`);
+    }
 }
 
-export function saveQuestionAnswer(user, questionId, answer) {
-    return _saveQuestionAnswer(user, questionId, answer);
+export function saveQuestionAnswerApi(user, questionId, answer) {
+    try {
+        return _saveQuestionAnswer(user, questionId, answer);
+    } catch (err) {
+        console.log(`Error while saving the answer of questions : ${err}`);
+    }
 }
