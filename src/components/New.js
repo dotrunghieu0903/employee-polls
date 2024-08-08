@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
 
@@ -9,13 +9,16 @@ const New = () => {
     const [firstOption, setFirstOption] = useState('');
     const [secondOption, setSecondOption] = useState('');
     const [error, setError] = useState('');
+    const authorId = useSelector((state) => state.authorization);
+
+    console.log(`state from New ${JSON.stringify(authorId)}`);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handlePoll = (e) => {
         e.preventDefault();
-        dispatch(saveQuestion(firstOption, secondOption))
+        dispatch(saveQuestion({firstOption, secondOption, authorId}))
             .catch((error) => setError(error));
         navigate("/");
         setFirstOption("");

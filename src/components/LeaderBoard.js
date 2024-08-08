@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Table, Image } from "react-bootstrap";
-import { initData } from "../actions/users";
+import { getUsers } from "../actions/users";
 
 const LeaderBoard = () => {
     const dispatch = useDispatch();
     const { users, loading } = useSelector((state) => state.users);
 
     useEffect(() => {
-        dispatch(initData());
+        dispatch(getUsers());
       }, [dispatch]);
 
     console.log(`users from LeaderBoard component: ${JSON.stringify(users)}`)

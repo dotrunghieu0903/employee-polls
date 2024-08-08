@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import authorize from "../reducers/authorization";
+import authorizationReducer from "../reducers/authorizationReducer";
 import usersReducer from "../reducers/userReducer";
 import questionsReducer from "../reducers/questionReducer";
 
 export const store = configureStore({
     reducer: {
-        authorize,
+        authorization: authorizationReducer,
         users: usersReducer,
         questions : questionsReducer
     }

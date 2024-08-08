@@ -1,14 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getUsers } from '../actions/users';
 
-const userSlice = createSlice({
-    name: 'users',
+const authorizationSlice = createSlice({
+    name: 'authorization',
     initialState: {
-        users: [],
+        isAuthenticated: false,
+        user: null,
         loading: false,
-        error: null
+        error: null,
+        users: []
     },
-    reducers: {},
+    reducers: {
+        login: (state, action) => {
+            state.isAuthenticated = true;
+            state.user = action.payload;
+            state.error = null;
+        },
+        logout: (state) => {
+            state.isAuthenticated = false;
+            state.user = null;
+            state.error = null;
+        }
+    },
     extraReducers: (builder) => {
         builder
         .addCase(getUsers.pending, (state) => {
@@ -24,6 +37,6 @@ const userSlice = createSlice({
             state.error = action.error.message;
         })
     }
-});
-
-export default userSlice.reducer;
+})
+export const { login, logout } = authorizationSlice.actions
+export default authorizationSlice.reducer;

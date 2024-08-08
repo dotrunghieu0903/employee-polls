@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Image, InputGroup, Alert } from 'react-bootstrap';
 
 import { Eye, EyeSlashFill } from "react-bootstrap-icons";
 
 import logo from "../images/EmployeePolls.png"
-import { login } from "../actions/authorization";
+import { login } from "../reducers/authorizationReducer";
+import { getUsers } from "../actions/users";
 
 const Login = () =>
 {
@@ -16,19 +17,28 @@ const Login = () =>
     const dispatch = useDispatch();
     const [showPass, setShowPass] = useState(false);
     const navigate = useNavigate();
+    const { users } = useSelector((state) => state.users);
 
     const clickHandler = () => {
         setShowPass((prev) => !prev);
     };
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        dispatch(login(userName, password))
-        .catch((error) => setError(error))
+    useEffect(() => {
+        dispatch(getUsers());
+    }, [dispatch]);
 
-        setUserName("");
-        setPassword("");
-        navigate("/");
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const foundUser = Object.values(users).find(u => u.id === userName && u.password === password)
+        if(foundUser) {
+            dispatch(login(foundUser));
+            setUserName("");
+            setPassword("");
+            navigate("/");
+        }
+        else {
+            setError(`Invalid username or password ${userName}`);
+        }
     }
 
     return (
