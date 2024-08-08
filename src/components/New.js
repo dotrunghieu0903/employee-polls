@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert, Container } from "react-bootstrap";
 
 import { saveQuestion } from "../actions/questions";
 
-const New = () => {
+const New = ({marginTop}) => {
     const [firstOption, setFirstOption] = useState('');
     const [secondOption, setSecondOption] = useState('');
     const [error, setError] = useState('');
@@ -26,7 +26,7 @@ const New = () => {
     };
 
     return (
-        <div className="">
+        <Container style={{ marginTop: `${marginTop}px`}}>
             <h1 className="text-center">Would You Rather</h1>
             <h6 className="text-center">Create Your Own Poll</h6>
             {error && <Alert variant="danger">{error}</Alert>}
@@ -55,7 +55,7 @@ const New = () => {
                 <Button variant="secondary" disabled={firstOption ==="" && secondOption === "" }>Submit</Button>
             </div>
             </Form>
-        </div>
+        </Container>
     )
 }
 

@@ -44,7 +44,7 @@ const Login = () =>
     return (
         <div>
             <h2 className="text-center">Employee Polls</h2>
-            <Image src={logo} alt="Logo" width={100} style={{display:"block", marginLeft:"auto", marginRight:"auto",width:"25%"}} />
+            <Image src={logo} alt="Logo" width={100} style={{display:"block", marginLeft:"auto", marginRight:"auto",width:"20%"}} />
             <h3 className="text-center">Log In</h3>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleLogin}>

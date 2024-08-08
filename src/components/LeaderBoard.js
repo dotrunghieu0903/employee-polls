@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container, Table, Image } from "react-bootstrap";
 import { getUsers } from "../actions/users";
 
-const LeaderBoard = () => {
+const LeaderBoard = ({marginTop}) => {
     const dispatch = useDispatch();
     const { users, loading } = useSelector((state) => state.users);
 
@@ -16,8 +16,8 @@ const LeaderBoard = () => {
 
     if (loading) return <p>Loading...</p>;
     return (
-        <Container>
-            <Table bordered striped >
+        <Container style={{ marginTop: `${marginTop}px`}}>
+            <Table bordered striped>
                 <thead>
                     <tr>
                         <th>No</th>
