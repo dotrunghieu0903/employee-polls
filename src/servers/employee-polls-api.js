@@ -5,7 +5,7 @@ import {
     _saveQuestionAnswer
 } from "./_DATA.js"
 
-export async function getUsers() {
+export async function getUsersApi() {
     try {
         const fetchedUser = await _getUsers();
         return fetchedUser;
@@ -14,7 +14,7 @@ export async function getUsers() {
     }
 }
 
-export async function getQuestions() {
+export async function getQuestionsApi() {
     try {
         return await _getQuestions();
     } catch (err) {
