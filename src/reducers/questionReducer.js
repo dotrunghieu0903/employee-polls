@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { saveQuestion } from '../actions/questions';
+import { getQuestions, saveQuestion, saveQuestionAnswer } from '../actions/questions';
 
 // import { RECEIVE_QUESTION, ANSWER_QUESTION, ADD_QUESTION } from "../actions/questions";
 
@@ -37,6 +37,14 @@ const pollsSlice = createSlice({
         .addCase(saveQuestion.fulfilled, (state, action) => {
             state.questions[action.payload.id] = action.payload;
         })
+        .addCase(saveQuestionAnswer.fulfilled, (state, action) => {
+            const { authedUser, questionId, answer} = action.meta.arg;
+            state.questions[questionId][answer].votes.push(authedUser.id)
+        })
+        .addCase(getQuestions.fulfilled, (state, action) => {
+            state.questions = action.payload;
+            state.status = "success"
+        });
     }
 });
 
