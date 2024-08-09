@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getQuestionsApi, saveQuestionAnswerApi, saveQuestionApi } from "../servers/employee-polls-api";
 
-export const getQuestions = createAsyncThunk('question/getQuestion', async() => {
+export const getQuestions = createAsyncThunk('question/getQuestions', async() => {
     return await getQuestionsApi();
 })
 

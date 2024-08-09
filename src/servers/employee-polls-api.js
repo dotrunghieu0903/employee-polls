@@ -7,8 +7,8 @@ import {
 
 export async function getUsersApi() {
     try {
-        const fetchedUser = await _getUsers();
-        return fetchedUser;
+        const fetchedUsers = await _getUsers();
+        return fetchedUsers;
     } catch (err) {
         console.log(`Error while fetching the users : ${err}`);
     }
@@ -16,7 +16,8 @@ export async function getUsersApi() {
 
 export async function getQuestionsApi() {
     try {
-        return await _getQuestions();
+        const fetchedQuestions = await _getQuestions();
+        return fetchedQuestions;
     } catch (err) {
         console.log(`Error while fetching the questions : ${err}`);
     }

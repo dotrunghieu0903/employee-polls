@@ -9,16 +9,16 @@ const New = ({marginTop}) => {
     const [firstOption, setFirstOption] = useState('');
     const [secondOption, setSecondOption] = useState('');
     const [error, setError] = useState('');
-    const authorId = useSelector((state) => state.authorization);
+    const authorization = useSelector((state) => state.authorization);
 
-    console.log(`state from New ${JSON.stringify(authorId)}`);
+    console.log(`state from New ${JSON.stringify(authorization)}`);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handlePoll = (e) => {
+    const handleQuestion = (e) => {
         e.preventDefault();
-        dispatch(saveQuestion({firstOption, secondOption, authorId}))
+        dispatch(saveQuestion({optionOneText: firstOption, optionTwoText: secondOption, authorId: authorization.user.id}))
             .catch((error) => setError(error));
         navigate("/");
         setFirstOption("");
@@ -30,7 +30,7 @@ const New = ({marginTop}) => {
             <h1 className="text-center">Would You Rather</h1>
             <h6 className="text-center">Create Your Own Poll</h6>
             {error && <Alert variant="danger">{error}</Alert>}
-            <Form onSubmit={handlePoll}>
+            <Form onSubmit={handleQuestion}>
             <Form.Group controlId="formFirstOption">
                 <Form.Label className="text-center w-100">First Option</Form.Label>
                 <Form.Control
@@ -52,7 +52,7 @@ const New = ({marginTop}) => {
                     required />
             </Form.Group>
             <div className="d-flex justify-content-center align-items-center">
-                <Button variant="secondary" disabled={firstOption ==="" && secondOption === "" }>Submit</Button>
+                <Button variant="secondary" disabled={firstOption ==="" && secondOption === ""} type="submit">Submit</Button>
             </div>
             </Form>
         </Container>

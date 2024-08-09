@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getQuestions, saveQuestion, saveQuestionAnswer } from '../actions/questions';
 
-const pollsSlice = createSlice({
-    name: "polls",
+const questionSlice = createSlice({
+    name: "questions",
     initialState: {
-        questions: {},
-        status: "inactive"
+        questions: [],
+        status: "initial"
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -24,4 +24,4 @@ const pollsSlice = createSlice({
     }
 });
 
-export default pollsSlice.reducer;
+export default questionSlice.reducer;

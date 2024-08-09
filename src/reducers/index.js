@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 
-import authorize from "./authorization";
-import users from "./user";
-import questions from "./questions";
+import authorization from "./authorizationReducer";
+import users from "./userReducer";
+import questions from "./questionReducer";
 
-export default combineReducers({
-    authorize,
+const rootReducer = combineReducers({
+    authorization,
     users,
     questions
 });
+
+export default rootReducer;
